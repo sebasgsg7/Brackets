@@ -708,9 +708,10 @@ Lucio Lopez
   document.getElementById("btn-desbloquear").addEventListener("click", () => aplicarBloqueo(false));
 
   // Al cargar la página, aplicar el bloqueo si estaba activado
-  const modoBloqueado = localStorage.getItem("modoBloqueado") === "false";
+  const modoBloqueado = localStorage.getItem("modoBloqueado") === "true";
   aplicarBloqueo(modoBloqueado);
 </script>
 </body>
 </html>
+
 
