@@ -691,5 +691,26 @@ Lucio Lopez
       input.click();
     };
   </script>
+  <div style="margin-bottom: 1rem;">
+  <button id="btn-bloquear">🔒 Bloquear edición</button>
+  <button id="btn-desbloquear">🔓 Desbloquear edición</button>
+</div>
+  <script>
+  function aplicarBloqueo(bloqueado) {
+    document.querySelectorAll("input, textarea, select, button:not(#btn-bloquear):not(#btn-desbloquear)").forEach(el => {
+      el.disabled = bloqueado;
+    });
+    localStorage.setItem("modoBloqueado", bloqueado ? "true" : "false");
+  }
+
+  // Eventos de los botones
+  document.getElementById("btn-bloquear").addEventListener("click", () => aplicarBloqueo(true));
+  document.getElementById("btn-desbloquear").addEventListener("click", () => aplicarBloqueo(false));
+
+  // Al cargar la página, aplicar el bloqueo si estaba activado
+  const modoBloqueado = localStorage.getItem("modoBloqueado") === "false";
+  aplicarBloqueo(modoBloqueado);
+</script>
 </body>
 </html>
+
